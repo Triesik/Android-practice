@@ -1,0 +1,2 @@
+rootProject.name='organizer_app'
+include ':app'

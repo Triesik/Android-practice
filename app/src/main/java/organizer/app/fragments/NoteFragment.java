@@ -1,8 +1,6 @@
 package organizer.app.fragments;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -22,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import localdatabase.DatabaseHandler;
 import localdatabase.MyDatabase;
 import organizer.app.NoteActivity;
 import organizer.app.R;
@@ -71,7 +68,6 @@ public class NoteFragment extends Fragment implements NoteAdapter.onClickListene
         nViewModel.getAllNotes().observe(getViewLifecycleOwner(), new Observer<List<Note>>() {
             @Override
             public void onChanged(@Nullable final List<Note> words) {
-                // Update the cached copy of the words in the adapter.
                 adapter.setNotes(words);
             }
         });
@@ -84,7 +80,6 @@ public class NoteFragment extends Fragment implements NoteAdapter.onClickListene
             public void onClick(View view) {
                 Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.create_note_window);
-                dialog.setTitle("ALERT!!");
                 Button save = (Button) dialog.findViewById(R.id.saveButton);
                 final EditText editText = (EditText) dialog.findViewById(R.id.note_input);
                 dialog.show();

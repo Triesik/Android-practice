@@ -17,10 +17,12 @@ import android.os.AsyncTask;
 public class NoteRepository {
     private NoteDAO noteDao;
     private LiveData<List<Note>> allNotes;
+    private LiveData<Note> note;
     public NoteRepository(Context context) {
         MyDatabase database = MyDatabase.getInstance(context);
         noteDao = database.noteDao();
         allNotes = noteDao.getAll();
+
     }
     public void insert(Note note) {
         new InsertNoteAsyncTask(noteDao).execute(note);
@@ -36,6 +38,10 @@ public class NoteRepository {
         return allNotes;
     }
 
+    public Note getNote(int id)
+    {
+        return noteDao.getNote(id);
+    }
 
     private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void> {
         private NoteDAO noteDao;
@@ -67,6 +73,17 @@ public class NoteRepository {
         @Override
         protected Void doInBackground(Note... notes) {
             noteDao.delete(notes[0]);
+            return null;
+        }
+    }
+
+    private static class GetNoteAsyncTask extends AsyncTask<Note, Void, Void> {
+        private NoteDAO noteDao;
+        private GetNoteAsyncTask(NoteDAO noteDao) {this.noteDao = noteDao;}
+
+        @Override
+        protected Void doInBackground(Note... notes) {
+            noteDao.getNote(notes[0].getId());
             return null;
         }
     }

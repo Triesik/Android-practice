@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import localdatabase.DatabaseHandler;
-import organizer.app.data.data.Note;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;

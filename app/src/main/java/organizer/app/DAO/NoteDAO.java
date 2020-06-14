@@ -18,6 +18,9 @@ public interface NoteDAO {
     @Query("SELECT * FROM notes")
     LiveData<List<Note>> getAll();
 
+    @Query("SELECT * FROM notes")
+    List<Note> getAllNotesAsList();
+
     @Query("SELECT * FROM notes WHERE id =:noteId")
     Note getNote(int noteId);
 

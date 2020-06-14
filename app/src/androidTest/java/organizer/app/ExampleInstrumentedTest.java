@@ -1,11 +1,9 @@
 package organizer.app;
 
-import android.app.Application;
 import android.content.Context;
-import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -18,7 +16,11 @@ import localdatabase.MyDatabase;
 import organizer.app.DAO.NoteDAO;
 import organizer.app.Repositories.NoteRepository;
 import organizer.app.data.data.Note;
-import organizer.app.fragments.NoteViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static org.junit.Assert.*;
 
@@ -52,6 +54,11 @@ public class ExampleInstrumentedTest {
         //list = db.noteDao().getAllAsList();
 
         assertNotNull(note.id);
+
+    }
+
+    @Test
+    public void testRetrofit() {
 
     }
 }

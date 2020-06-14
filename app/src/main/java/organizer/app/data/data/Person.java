@@ -1,15 +1,25 @@
 package organizer.app.data.data;
+import com.google.gson.annotations.SerializedName;
 
-public class Person {
 
-    private String name;
-    private int id;
-    private String phoneNumber;
+public class Person
+{
+    @SerializedName("personId")
+    public String PersonId;
+    @SerializedName("name")
+    public String Name;
+    @SerializedName("phoneNumber")
+    public String PhoneNumber;
+    @SerializedName("address")
+    public String Address;
 
-    public Person(int id, String name, String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-        this.id = id;
-        this.name = name;
+
+    public Person(String PersonId ,String Name, String Address, String PhoneNumber)
+    {
+        this.Name = Name;
+        this.PersonId = PersonId;
+        this.Address = Address;
+        this.PhoneNumber = PhoneNumber;
     }
 
     public Person()
@@ -17,35 +27,45 @@ public class Person {
 
     }
 
-    public String getPhoneNumber() {
-
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String password) {
-
-        this.phoneNumber = password;
-    }
-
-    public void setName(String name) {
-
-        this.name = name;
-    }
-
-
-    public String getName() {
-
-        return name;
-    }
-
-    public int getId()
+    public void setName(String name)
     {
-        return id;
+        this.Name = name;
     }
 
-    public void setId(int id)
+    public void setPersonId(String id)
     {
-        this.id = id;
+        this.PersonId = PersonId;
+    }
+
+    public void setAddress(String address)
+    {
+        this.Address = address;
+    }
+
+    public void setPhoneNumber(String PhoneNumber)
+    {
+        this.PhoneNumber = PhoneNumber;
+    }
+
+    public String getPersonId()
+    {
+        return PersonId;
+    }
+
+    public String getName()
+    {
+        return Name;
+    }
+
+    public String getPhoneNumber()
+    {
+        return PhoneNumber;
+    }
+
+    public String getAddress()
+    {
+        return Address;
     }
 
 }
+

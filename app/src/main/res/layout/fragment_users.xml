@@ -5,7 +5,7 @@
     android:id="@+id/frameLayoutUser"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="organizer.app.fragments.fragment_users">
+    tools:context="organizer.app.fragments.PersonFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUser"

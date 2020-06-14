@@ -1,7 +1,5 @@
 package organizer.app.fragments;
 
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -9,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,11 +18,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import localdatabase.DatabaseHandler;
 import organizer.app.R;
 import organizer.app.adapters.UserAdapter;
-import organizer.app.data.data.Note;
 import organizer.app.data.data.Person;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -31,7 +29,7 @@ import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class fragment_users extends Fragment implements UserAdapter.onClickListener {
+public class PersonFragment extends Fragment implements UserAdapter.onClickListener {
 
 
     private organizer.app.fragments.NoteViewModel mViewModel;
@@ -40,13 +38,14 @@ public class fragment_users extends Fragment implements UserAdapter.onClickListe
 
     private RecyclerView recyclerView;
 
-    private List<Person> users = new ArrayList<>();
+    private List<Person> personList = new ArrayList<>();
 
-    DatabaseHandler db;
+    private PersonViewModel pViewModel;
 
 
-    public static fragment_users newInstance() {
-        return new fragment_users();
+
+    public static PersonFragment newInstance() {
+        return new PersonFragment();
     }
 
     @Override
@@ -58,10 +57,14 @@ public class fragment_users extends Fragment implements UserAdapter.onClickListe
         recyclerView = view.findViewById(R.id.recyclerViewUser);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        db = new DatabaseHandler(getActivity());
-
-        UserAdapter adapter = new UserAdapter(users, this);
-
+        pViewModel = new PersonViewModel();
+        UserAdapter adapter = new UserAdapter(personList, this);
+        pViewModel.getAllPeople().observe(getViewLifecycleOwner(), new Observer<List<Person>>() {
+            @Override
+            public void onChanged(@Nullable final List<Person> people) {
+                adapter.setNotes(people);
+            }
+        });
         recyclerView.setAdapter(adapter);
         mainFab = requireActivity().findViewById(R.id.main_fab);
         mainFab.setImageResource(R.drawable.ic_add);
@@ -81,10 +84,6 @@ public class fragment_users extends Fragment implements UserAdapter.onClickListe
                         String textName = editTextName.getText().toString();
                         String textPhone = editTextPhone.getText().toString();
                         Log.d(TAG, "onClick: clicked with id: " + textPhone);
-                        int count = db.getPersonCount();
-                        Log.d(TAG, String.valueOf(count));
-                        Person person = new Person(count, textName, textPhone);
-                        db.addPerson(person);
                     }
                 });
             }

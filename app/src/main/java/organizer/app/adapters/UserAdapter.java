@@ -17,11 +17,11 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    List<Person> users;
+    List<Person> PersonList;
     private onClickListener onClickListener;
 
-    public UserAdapter(List<Person> users, onClickListener onClickListener) {
-        this.users = users;
+    public UserAdapter(List<Person> PersonList, onClickListener onClickListener) {
+        this.PersonList = PersonList;
         this.onClickListener = onClickListener;
     }
 
@@ -35,12 +35,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
-        holder.name.setText(users.get(position).getName());
+        holder.name.setText(PersonList.get(position).getName());
 
     }
 
     public int getItemCount() {
-        return users.size();
+        return PersonList.size();
+    }
+
+    public void setNotes(List<Person> personList){
+        PersonList = personList;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

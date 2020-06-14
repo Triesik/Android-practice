@@ -96,7 +96,6 @@ public class PersonFragment extends Fragment implements UserAdapter.onClickListe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //mViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
     }
 
     @Override

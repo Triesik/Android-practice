@@ -17,38 +17,26 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="151dp">
-
-                <Button
-                    android:id="@+id/btn_edit"
-                    android:layout_width="139dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/action_edit"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                android:layout_height="230dp">
 
                 <ImageView
                     android:id="@+id/iv_icon"
                     android:layout_width="93dp"
                     android:layout_height="82dp"
                     android:layout_gravity="right"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
                     android:src="@drawable/ic_menu_users"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_edit"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_edit"
-                    app:layout_constraintStart_toStartOf="@+id/btn_edit"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.824"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.017" />
 
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
@@ -56,20 +44,45 @@
                     android:text="John Doe"
                     android:textSize="40sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_icon"
+                    app:layout_constraintHorizontal_bias="0.192"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.128" />
 
                 <TextView
-                    android:id="@+id/tv_user_item_contact_details"
+                    android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@string/prompt_contact_info"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Address"
+                    android:textSize="40sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_phonenumber"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                    app:layout_constraintVertical_bias="0.833" />
+
+                <TextView
+                    android:id="@+id/tv_phonenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="216dp"
+                    android:layout_marginLeft="216dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="3464356"
+                    android:textSize="40sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_icon"
+                    app:layout_constraintVertical_bias="0.862" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

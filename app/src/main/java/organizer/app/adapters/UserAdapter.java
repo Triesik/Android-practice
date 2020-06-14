@@ -36,6 +36,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
         holder.name.setText(PersonList.get(position).getName());
+        holder.address.setText(PersonList.get(position).getAddress());
+        holder.phonenumber.setText(PersonList.get(position).getPhoneNumber());
 
     }
 
@@ -51,19 +53,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
+        TextView address;
+        TextView phonenumber;
         ImageView icon;
-        Button btn_edit;
-
         onClickListener onClickListener;
 
         ViewHolder(View itemView, onClickListener onClickListener) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_name);
             icon = itemView.findViewById(R.id.iv_icon);
-            btn_edit = itemView.findViewById(R.id.btn_edit);
+            address = itemView.findViewById(R.id.tv_address);
+            phonenumber = itemView.findViewById(R.id.tv_phonenumber);
+
             this.onClickListener = onClickListener;
 
-            btn_edit.setOnClickListener(this);
         }
 
         @Override

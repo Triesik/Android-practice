@@ -40,18 +40,10 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         MyDatabase db = MyDatabase.getInstance(appContext);
         LiveData<List<Note>> notes;
-        //Note note3 = new Note(5, "aaaccxxx", "eeeeeeeeeeeeeeeeeeeeeee");
         Note note = new Note();
-        //Note note2 = new Note(1, "start your note", "aecxcsdv");
-        //db.noteDao().insert(note2);
-        //db.noteDao().insert(note3);
         note = db.noteDao().getNote(5);
         NoteRepository nRepository;
-        nRepository = new NoteRepository(appContext);
-        //NoteViewModel noteViewModel;
 
-        //listrepo = nRepository.getAllAsList();
-        //list = db.noteDao().getAllAsList();
 
         assertNotNull(note.id);
 

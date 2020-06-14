@@ -1,7 +1,14 @@
 package organizer.app;
 
+import android.app.Dialog;
+import android.content.ClipData;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -17,11 +24,14 @@ import androidx.appcompat.widget.Toolbar;
 import organizer.app.data.data.Note;
 import organizer.app.fragments.NoteViewModel;
 
+import static android.content.ContentValues.TAG;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FloatingActionButton mainFab;
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         mainFab = findViewById(R.id.main_fab);
         mainFab.hide();
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
